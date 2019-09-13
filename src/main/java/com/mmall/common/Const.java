@@ -1,0 +1,12 @@
+package com.mmall.common;
+
+public class Const {
+
+    public static final String CURRENT_USER = "currenUser";
+    public static final String USERNAME= "username";
+    public static final String EMAIL="email";
+    public interface Rore{
+        int RORE_CUSTOMER=0;    //普通用户
+        int RORE_ADMIN=1;       //管理员
+    }
+}
