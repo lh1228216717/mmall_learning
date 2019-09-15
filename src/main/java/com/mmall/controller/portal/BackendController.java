@@ -7,16 +7,19 @@ import com.mmall.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/manger/user")
-public class Backend {
+public class BackendController {
 
     @Autowired
     private UserService userService;
 
+    @RequestMapping("/login.do")
+    @ResponseBody
     public ServerResponse login(String userName, String password, HttpSession session){
         ServerResponse<User> sr = userService.checkUser(userName,password);
         if (sr.isSuccess()) {

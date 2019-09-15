@@ -1,4 +1,4 @@
-package com.mmall.service;
+package com.mmall.service.impl;
 
 import com.mmall.common.Const;
 import com.mmall.common.ResponseCode;
@@ -6,12 +6,12 @@ import com.mmall.common.ServerResponse;
 import com.mmall.common.TokenCache;
 import com.mmall.dao.UserMapper;
 import com.mmall.pojo.User;
+import com.mmall.service.UserService;
 import com.mmall.util.MD5Util;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.UUID;
 
 @Service("userService")
@@ -149,4 +149,12 @@ public class UserServiceImpl implements UserService {
         user.setPassword(StringUtils.EMPTY);
         return ServerResponse.createBySuccess(user);
     }
+
+    public  ServerResponse checkAdminRole(User user){
+        if(user!=null && user.getRole()==Const.Rore.RORE_ADMIN){
+            return ServerResponse.createBySuccess();
+        }
+        return ServerResponse.createByError();
+    }
+
 }
