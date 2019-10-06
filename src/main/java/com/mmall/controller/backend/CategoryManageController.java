@@ -1,4 +1,4 @@
-package com.mmall.controller.portal;
+package com.mmall.controller.backend;
 
 import com.mmall.common.Const;
 import com.mmall.common.ResponseCode;
@@ -34,7 +34,7 @@ public class CategoryManageController {
      * @param parentId
      * @return
      */
-    @RequestMapping("/addCategory.do")
+    @RequestMapping(value = "/addCategory.do",method = RequestMethod.POST)
     @ResponseBody
     public ServerResponse addCategory(HttpSession session,String categoryName,@RequestParam(value = "parentId",defaultValue = "0") int parentId){
         User user = (User)session.getAttribute(Const.CURRENT_USER);

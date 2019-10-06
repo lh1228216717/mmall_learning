@@ -1,4 +1,4 @@
-package com.mmall.controller.portal;
+package com.mmall.controller.backend;
 
 import com.mmall.common.Const;
 import com.mmall.common.ServerResponse;
@@ -7,6 +7,7 @@ import com.mmall.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
@@ -18,7 +19,7 @@ public class BackendController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping("/login.do")
+    @RequestMapping(value = "/login.do",method = RequestMethod.POST)
     @ResponseBody
     public ServerResponse login(String userName, String password, HttpSession session){
         ServerResponse<User> sr = userService.checkUser(userName,password);

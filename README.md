@@ -272,8 +272,129 @@ answer|密码地市验证答案|
 "msg": "用户未登录"
 }
 ```
+## 后台品类管理相关接口
 
+>* 添加品类接口  /manger/category/addCategory.do  HTTP     POST
 
+入参名称 | 入参说明
+-|-
+categoryName|品类名称|
+parentId|父id|
+
+>* success
+```xml
+{
+"status": 0,
+"msg": "SUCCESS"
+}
+```
+>* error
+```xml
+{
+"status": 0,
+"msg": "用户未登录"
+}
+```
+>* 修改品类名称接口  /manger/category/updateCategory.do  HTTP     POST
+
+入参名称 | 入参说明
+-|-
+categoryName|品类名称|
+categoryId|品类id|
+
+>* success
+```xml
+{
+"status": 0,
+"msg": "SUCCESS"
+}
+```
+>* error
+```xml
+{
+"status": 0,
+"msg": "用户未登录"
+}
+```
+>* 查询当前节点的平级品类  /manger/category/getCategoryList.do  HTTP     POST
+
+入参名称 | 入参说明
+-|-
+parentId|父id|
+
+>* success
+```xml
+"status": 0,
+"data":[
+{"id": 100001, "parentId": 0, "name": "家用电器", "status": true, "sortOrder": null,…},
+{"id": 100002, "parentId": 0, "name": "数码3C", "status": true, "sortOrder": null,…},
+{"id": 100003, "parentId": 0, "name": "服装箱包", "status": true, "sortOrder": null,…},
+{"id": 100004, "parentId": 0, "name": "食品生鲜", "status": true, "sortOrder": null,…},
+{"id": 100005, "parentId": 0, "name": "酒水饮料", "status": true, "sortOrder": null,…},
+{"id": 100031, "parentId": 0, "name": "测试品类1", "status": true, "sortOrder": null,…}
+]
+}
+```
+>* error
+```xml
+{
+"status": 0,
+"msg": "用户未登录"
+}
+```
+>* 递归查询当前节点及子节点接口  /manger/category/getDeppCategoryList.do  HTTP     POST
+
+入参名称 | 入参说明|
+-|-
+
+categoryId | id |
+
+>* success
+```xml
+{
+"status": 0,
+"data":[
+100011,
+100024,
+100016,
+100012,
+100026,
+100023,
+100025,
+100028,
+100004,
+100029,
+100013,
+100019,
+100001,
+100018,
+100017,
+100030,
+100008,
+100014,
+100002,
+100015,
+100005,
+100021,
+100022,
+100027,
+100009,
+100020,
+100031,
+100006,
+100010,
+100007,
+100003
+]
+}
+```
+>* error
+```xml
+{
+"status": 0,
+"msg": "用户未登录"
+}
+```
 ## 其他说明
 >* org.mybatis.generator
 ```xml
@@ -305,3 +426,4 @@ spring boot 官方demo
   </select>
   对应dao文件中 @Param在程序中为什么必写
 ```
+>* 单元测试框架需要学习一个
